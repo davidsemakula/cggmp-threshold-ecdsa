@@ -313,10 +313,10 @@ enum R {
 ///
 /// Hides actual messages structure so it could be changed without breaking semver policy.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ProtocolMessage(M);
+pub struct ProtocolMessage(pub M);
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-enum M {
+pub enum M {
 	Round1(Box<SigningBroadcastMessage1<Secp256k1>>),
 	Round2(Box<Option<SigningIdentifiableAbortMessage<Secp256k1>>>),
 }
