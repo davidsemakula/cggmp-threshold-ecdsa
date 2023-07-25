@@ -325,10 +325,10 @@ enum R {
 ///
 /// Hides actual messages structure so it could be changed without breaking semver policy.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ProtocolMessage(M);
+pub struct ProtocolMessage(pub M);
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-enum M {
+pub enum M {
 	Round1(Option<JoinMessage<Secp256k1, Sha256, { crate::utilities::STAT_PARAM }>>),
 	Round2(
 	    Option<RefreshMessage<Secp256k1, Sha256, { crate::utilities::STAT_PARAM }>>,
